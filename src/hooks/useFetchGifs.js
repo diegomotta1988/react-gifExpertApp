@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 import { getGifs } from '../helpers/getGifs';
 
 export const useFetchGifs = (category) => {
-  const API_KEY = 'jK8GqN6qzwSVhjjH1UwKaRNVqJijd5Ig';
-  const [state, setState] = useState({ images: [], loading: true });
+  const [state, setState] = useState({ data: [], loading: true });
 
   useEffect(() => {
-    getGifs(category, API_KEY).then((images) => {
-      setState({ images, loading: false });
+    getGifs(category).then((images) => {
+      setState({ data: images, loading: false });
     });
   }, [category]);
 

@@ -3,12 +3,12 @@ import React from 'react';
 import { GifGridItem } from './GifGridItem';
 import { useFetchGifs } from './../hooks/useFetchGifs';
 
+import propTypes from 'prop-types';
+
 export const GifGrid = ({ category }) => {
   // const [images, setImages] = useState([]);
-  const { images, loading } = useFetchGifs(category);
+  const { data: images, loading } = useFetchGifs(category);
   // Al pasarle las dependencias como [] sólo se ejecuta al renderizarse por primera vez el componente
-
-  const API_KEY = 'jK8GqN6qzwSVhjjH1UwKaRNVqJijd5Ig';
 
   return (
     <>
@@ -21,4 +21,8 @@ export const GifGrid = ({ category }) => {
       </div>
     </>
   );
+};
+
+GifGrid.propTypes = {
+  category: propTypes.string.isRequired,
 };
